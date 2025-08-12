@@ -11,11 +11,10 @@ from datetime import datetime
 app = Flask(__name__)
 app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'office_chat_secret_key_2024')
 
-# Configure SocketIO for production with CORS for static site
+# Configure SocketIO for Render deployment - remove async_mode to let it auto-detect
 socketio = SocketIO(
     app, 
     cors_allowed_origins="*",  # Allow connections from your static site
-    async_mode='eventlet',
     logger=True, 
     engineio_logger=True
 )
